@@ -33,15 +33,15 @@ INSTALLED_APPS = [
 ]
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    'ROTATE_REFRESH_TOKENS': False,
+        'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+        'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+        'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
-    'UPDATE_LAST_LOGIN': False,
-    'ALGORITHM': 'HS256',
-    'USER_ID_FIELD': 'id',
-    'USER_ID_CLAIM': 'user_id',
-}
+        'UPDATE_LAST_LOGIN': False,
+        'ALGORITHM': 'HS256',
+        'USER_ID_FIELD': 'id',
+        'USER_ID_CLAIM': 'user_id',
+    }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise'
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 REST_FRAMEWORK = {
@@ -85,19 +85,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'authProject.wsgi.application'
 
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dcta979oombim5',
-        'USER': 'bpxuiekvephoja',
-        'PASSWORD': '712c7f28b88fd098443647469432500b011e0e52bbfc14c036017f67374e1caf',
-        'HOST': 'ec2-44-206-89-185.compute-1.amazonaws.com',
+        'NAME': 'd7f0sek9q6pond',
+        'USER': 'gdczmfljigxbej',
+        'PASSWORD': 'b275156be542561be9fe8090fa09f4cc345027d2cc62a751b9963244dfd6800d',
+        'HOST': 'ec2-44-210-36-247.compute-1.amazonaws.com',
         'PORT': '5432',
-        }
+    }
 }
 
 
