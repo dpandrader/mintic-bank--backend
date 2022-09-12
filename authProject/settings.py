@@ -2,6 +2,9 @@
 
 from pathlib import Path
 from datetime import timedelta
+import os
+import psycopg2
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -17,7 +20,7 @@ SECRET_KEY = 'django-insecure-nb5ge5ad_bibue60dyf4r8-63klv7i#k@-oh)j!i^6g0%82mpm
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -37,7 +40,7 @@ SIMPLE_JWT = {
         'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
         'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
         'ROTATE_REFRESH_TOKENS': False,
-    'BLACKLIST_AFTER_ROTATION': True,
+        'BLACKLIST_AFTER_ROTATION': True,
         'UPDATE_LAST_LOGIN': False,
         'ALGORITHM': 'HS256',
         'USER_ID_FIELD': 'id',
@@ -53,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 REST_FRAMEWORK = {
@@ -93,14 +97,21 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd7f0sek9q6pond',
-        'USER': 'gdczmfljigxbej',
-        'PASSWORD': 'b275156be542561be9fe8090fa09f4cc345027d2cc62a751b9963244dfd6800d',
-        'HOST': 'ec2-44-210-36-247.compute-1.amazonaws.com',
+        'NAME': 'd5mivtcoqt3ttb',
+        'USER': 'tiwfoqitowaick',
+        'PASSWORD': '90779f53dbeccb3fccabcce2c394d9efb08eecc1e3f618cf8b1b622ca5fdcee5',
+        'HOST': 'ec2-52-200-5-135.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
 
+
+# DATABASE_URL = "https://mintic-bd-atenea-bank.herokuapp.com/"
+# DATABASE_URL = os.environ['DATABASE_URL']
+# conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
+
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
